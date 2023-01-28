@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView=findViewById(R.id.btmNavigation);
+        UsersFragment usersFragment=new UsersFragment();
+
+        bottomNavigationView.setSelectedItemId(R.id.people);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Home Clicked", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.people:
-                        Toast.makeText(MainActivity.this, "Users Clicked", Toast.LENGTH_SHORT).show();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,usersFragment).commit();
                         return true;
                     case R.id.call:
                         Toast.makeText(MainActivity.this, "call Clicked", Toast.LENGTH_SHORT).show();
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
 
 
     }
