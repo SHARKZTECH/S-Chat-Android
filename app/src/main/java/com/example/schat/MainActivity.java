@@ -17,25 +17,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView=findViewById(R.id.btmNavigation);
+
         UsersFragment usersFragment=new UsersFragment();
+        SettingsFragment settingsFragment=new SettingsFragment();
+        CallFragment callFragment=new CallFragment();
+        HomeFragment homeFragment=new HomeFragment();
 
         bottomNavigationView.setSelectedItemId(R.id.people);
+        getSupportFragmentManager().beginTransaction().add(R.id.container,usersFragment).commit();
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
-                        Toast.makeText(MainActivity.this, "Home Clicked", Toast.LENGTH_SHORT).show();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
                         return true;
                     case R.id.people:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,usersFragment).commit();
                         return true;
                     case R.id.call:
-                        Toast.makeText(MainActivity.this, "call Clicked", Toast.LENGTH_SHORT).show();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,callFragment).commit();
                         return true;
                     case R.id.settings:
-                        Toast.makeText(MainActivity.this, "Setting Clicked", Toast.LENGTH_SHORT).show();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,settingsFragment).commit();
                         return true;
                 }
                 return false;
