@@ -1,9 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChatActivity"
+    android:background="#EDEDE8">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/bg_white"
+        android:layout_alignParentTop="true"/>
+
+    <LinearLayout
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/msgInptContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/msgReceivedContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/msgReceived"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".7"
+            android:text="Hello shah shsh shsh shhs
+            shhshsh shhh hshsh sjjjs jsjsj sjjs sjjsjs"
+            android:background="@drawable/bg_white"
+            android:layout_margin="15dp"
+            android:padding="8dp"/>
+    </LinearLayout>
+        <TextView
+            android:id="@+id/timReceived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="09:32 PM"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="10dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/msgSendContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:gravity="end">
+        <TextView
+            android:id="@+id/msgSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".7"
+            android:text="Hello shah shsh shsh shhs"
+            android:background="@drawable/bg_send"
+            android:layout_margin="15dp"
+            android:padding="8dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/timSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09:34 PM"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/msgInptContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_white"
+        app:placeholderText="Type Here"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        android:padding="20dp"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/msgInpt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/user"
+            android:padding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>
