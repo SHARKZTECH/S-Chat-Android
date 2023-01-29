@@ -130,8 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/user"
-            android:padding="10dp"
-            android:inputType="text|number"/>
+            android:padding="10dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>
