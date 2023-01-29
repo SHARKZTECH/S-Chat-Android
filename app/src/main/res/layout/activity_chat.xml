@@ -7,15 +7,51 @@
     tools:context=".ChatActivity"
     android:background="#EDEDE8">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="@drawable/bg_white"
-        android:layout_alignParentTop="true"/>
+        android:paddingVertical="10dp">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true">
+           <com.google.android.material.card.MaterialCardView
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               app:cardCornerRadius="20dp">
+               <ImageView
+                   android:id="@+id/userImg"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:src="@drawable/person"/>
+           </com.google.android.material.card.MaterialCardView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="25dp">
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sharkz Reigns"/>
+            <TextView
+                android:id="@+id/onlineStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="online"/>
+            </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <LinearLayout
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/toolbarLayout"
         android:layout_above="@id/msgInptContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -90,11 +126,12 @@
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/msgInpt"
+            android:id="@+id/msgInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/user"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:inputType="text|number"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>
