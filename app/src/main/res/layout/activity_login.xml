@@ -24,8 +24,8 @@
         style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:placeholderText="Enter user Name"
-        android:hint="Enter User Name"
+        app:placeholderText="Enter Email"
+        android:hint="Enter Email"
         android:textColorHint="@color/white"
         app:hintTextColor="@color/white"
         app:placeholderTextColor="@color/white">
@@ -47,7 +47,8 @@
         android:textColorHint="@color/white"
         app:hintTextColor="@color/white"
         app:placeholderTextColor="@color/white"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userPassword"
             android:layout_width="match_parent"

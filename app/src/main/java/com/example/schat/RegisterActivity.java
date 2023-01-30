@@ -1,5 +1,6 @@
 package com.example.schat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,12 +9,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
     Button register;
     TextInputEditText userName,userPassword,cUserPassword;
     TextView btnLogin;
+
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         userPassword=findViewById(R.id.userPassword);
         cUserPassword=findViewById(R.id.userCPassword);
         btnLogin=findViewById(R.id.btnLogin);
+        mAuth=FirebaseAuth.getInstance();
 
         btnLogin.setOnClickListener(view -> {
             startActivity(new Intent(this,LoginActivity.class));
@@ -40,7 +48,18 @@ public class RegisterActivity extends AppCompatActivity {
             } else if (!password.equals(cPassword)) {
                 Toast.makeText(this, "passwords don't match!", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+                mAuth.createUserWithEmailAndPassword(name,password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                    Toast.makeText(RegisterActivity.this, "Account created successful!", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(RegisterActivity.this, "failed!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
     }
