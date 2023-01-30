@@ -17,13 +17,14 @@ import android.widget.Toast;
 public class UsersFragment extends Fragment {
 
     RecyclerView recyclerView;
-    Button button;
+    Button button,login;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_users, container, false);
 
         button=view.findViewById(R.id.chatBtn);
+        login=view.findViewById(R.id.LoginBtn);
        recyclerView=view.findViewById(R.id.recycler);
 
 
@@ -36,6 +37,9 @@ public class UsersFragment extends Fragment {
             public void onClick(View view) {
                 startActivity(new Intent(getContext(),ChatActivity.class));
             }
+        });
+        login.setOnClickListener(view1 -> {
+            startActivity(new Intent(getContext(),LoginActivity.class));
         });
 
         return view;

@@ -13,4 +13,10 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+    <item name="boxStrokeColor">#296D98</item>
+    <item name="boxStrokeWidth">1dp</item>
+    </style>
+
 </resources>
