@@ -32,7 +32,6 @@ import java.util.List;
 public class UsersFragment extends Fragment {
 
     RecyclerView recyclerView;
-    Button button;
     FirebaseAuth mAuth;
     FirebaseDatabase fDb;
     FirebaseUser user;
@@ -44,7 +43,6 @@ public class UsersFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_users, container, false);
 
-        button=view.findViewById(R.id.chatBtn);
        recyclerView=view.findViewById(R.id.recycler);
 
        mAuth=FirebaseAuth.getInstance();
@@ -56,13 +54,6 @@ public class UsersFragment extends Fragment {
          usersAdapter=new UsersAdapter(userList,getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(usersAdapter);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(),ChatActivity.class));
-            }
-        });
 
         getUsers();
 

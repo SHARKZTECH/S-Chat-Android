@@ -1,6 +1,7 @@
 package com.example.schat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         User user=userList.get(position);
 
         holder.userName.setText(user.getUserName());
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent=new Intent(context,ChatActivity.class);
+            intent.putExtra("user",user);
+            context.startActivity(intent);
+        });
     }
 
     @Override

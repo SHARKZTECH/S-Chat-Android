@@ -1,6 +1,9 @@
 package com.example.schat;
 
-public class User {
+
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private String email;
     private String userName;
