@@ -18,6 +18,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterActivity extends AppCompatActivity {
     Button register;
     TextInputEditText userName,userPassword,cUserPassword;
@@ -61,10 +64,10 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-
                                     user=mAuth.getCurrentUser();
                                     String userId=user.getUid();
-                                    dbRef.child("users").child(userId).setValue(user);
+                                    User user1=new User(user.getEmail(),user.getEmail(),"","");
+                                    dbRef.child("users").child(userId).setValue(user1);
 
                                     startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     Toast.makeText(RegisterActivity.this, "Account created successful!", Toast.LENGTH_SHORT).show();

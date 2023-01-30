@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,11 +18,15 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UsersFragment extends Fragment {
@@ -32,6 +37,8 @@ public class UsersFragment extends Fragment {
     FirebaseDatabase fDb;
     FirebaseUser user;
     DatabaseReference dbRef;
+    List<User> userList;
+    UsersAdapter usersAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,12 +49,11 @@ public class UsersFragment extends Fragment {
 
        mAuth=FirebaseAuth.getInstance();
        fDb=FirebaseDatabase.getInstance();
-       dbRef=fDb.getReference().child("Users");
-
+       dbRef=fDb.getReference().child("users");
        user=mAuth.getCurrentUser();
+       userList=new ArrayList<>();
 
-
-        UsersAdapter usersAdapter=new UsersAdapter();
+         usersAdapter=new UsersAdapter(userList,getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(usersAdapter);
 
@@ -64,10 +70,37 @@ public class UsersFragment extends Fragment {
     }
 
     public void getUsers(){
-        dbRef.addValueEventListener(new ValueEventListener() {
+        dbRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("Users", String.valueOf(snapshot.getValue()));
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                List<User> users=new ArrayList<>();
+                users.add(snapshot.getValue(User.class));
+                for (User user1:users) {
+                    if(!user1.getEmail().equals(user.getEmail())){
+                        userList.add(user1);
+                    }
+                }
+
+//                userList.add(snapshot.getValue(User.class));
+                usersAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                usersAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                usersAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                usersAdapter.notifyDataSetChanged();
+
             }
 
             @Override
