@@ -14,6 +14,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
     Button register;
@@ -21,6 +24,9 @@ public class RegisterActivity extends AppCompatActivity {
     TextView btnLogin;
 
     FirebaseAuth mAuth;
+    FirebaseDatabase fDb;
+    DatabaseReference dbRef;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
         cUserPassword=findViewById(R.id.userCPassword);
         btnLogin=findViewById(R.id.btnLogin);
         mAuth=FirebaseAuth.getInstance();
+        fDb=FirebaseDatabase.getInstance();
+        dbRef=fDb.getReference();
 
         btnLogin.setOnClickListener(view -> {
             startActivity(new Intent(this,LoginActivity.class));
@@ -53,6 +61,11 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
+
+                                    user=mAuth.getCurrentUser();
+                                    String userId=user.getUid();
+                                    dbRef.child("users").child(userId).setValue(user);
+
                                     startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     Toast.makeText(RegisterActivity.this, "Account created successful!", Toast.LENGTH_SHORT).show();
                                 }else{
