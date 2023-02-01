@@ -61,18 +61,13 @@ public class UsersFragment extends Fragment {
     }
 
     public void getUsers(){
-        dbRef.addChildEventListener(new ChildEventListener() {
+        dbRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                List<User> users=new ArrayList<>();
-                users.add(snapshot.getValue(User.class));
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-//                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-//                    User user1=(User)dataSnapshot.getValue(User.class);
-//                    user1.setUserId(dataSnapshot.getKey());
-//                    userList.add(user1);
-//                }
-                for (User user1:users) {
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    User user1=dataSnapshot.getValue(User.class);
+                    user1.setUserId(dataSnapshot.getKey());
                     if(!user1.getEmail().equals(user.getEmail())){
                         userList.add(user1);
                     }
@@ -80,24 +75,6 @@ public class UsersFragment extends Fragment {
 
 //                userList.add(snapshot.getValue(User.class));
                 usersAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                usersAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                usersAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                usersAdapter.notifyDataSetChanged();
-
             }
 
             @Override

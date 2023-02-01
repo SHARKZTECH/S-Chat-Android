@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 public class ChatAdapter extends RecyclerView.Adapter{
@@ -45,10 +46,12 @@ public class ChatAdapter extends RecyclerView.Adapter{
         Message message=messages.get(position);
         if (holder.getClass() == SenderViewHolder.class){
             ((SenderViewHolder) holder).senderMsg.setText(message.getText());
-//            ((SenderViewHolder) holder).timeSend.setText(message.getCreatedAt());
+            String formatedDate= DateFormat.getDateTimeInstance().format(message.getCreatedAt());
+            ((SenderViewHolder) holder).timeSend.setText(formatedDate);
         }else{
             ((ReceiverViewHolder) holder).receiverMsg.setText(message.getText());
-//            ((ReceiverViewHolder) holder).timeRe.setText(message.getCreatedAt());
+            String formatedDate= DateFormat.getDateTimeInstance().format(message.getCreatedAt());
+            ((ReceiverViewHolder) holder).timeRe.setText(formatedDate);
         }
 
     }
