@@ -66,6 +66,12 @@ public class UsersFragment extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 List<User> users=new ArrayList<>();
                 users.add(snapshot.getValue(User.class));
+
+//                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+//                    User user1=(User)dataSnapshot.getValue(User.class);
+//                    user1.setUserId(dataSnapshot.getKey());
+//                    userList.add(user1);
+//                }
                 for (User user1:users) {
                     if(!user1.getEmail().equals(user.getEmail())){
                         userList.add(user1);

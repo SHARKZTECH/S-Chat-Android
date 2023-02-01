@@ -10,6 +10,9 @@ public class User implements Serializable {
     private String profilePic;
     private String status;
 
+    private String userId;
+
+
     public User() {
     }
 
@@ -34,5 +37,13 @@ public class User implements Serializable {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

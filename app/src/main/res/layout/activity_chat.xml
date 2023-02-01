@@ -50,6 +50,8 @@
 
 
 
+
+
     <LinearLayout
         android:layout_below="@id/toolbarLayout"
         android:layout_above="@id/msgInptContainer"
@@ -57,60 +59,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/msgReceivedContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
-        <TextView
-            android:id="@+id/msgReceived"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".7"
-            android:text="Hello shah shsh shsh shhs
-            shhshsh shhh hshsh sjjjs jsjsj sjjs sjjsjs"
-            android:background="@drawable/bg_recieve"
-            android:layout_margin="15dp"
-            android:padding="8dp"/>
-    </LinearLayout>
-        <TextView
-            android:id="@+id/timReceived"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="09:32 PM"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="10dp"/>
+        <include
+            layout="@layout/msg_receiver"/>
 
+        <include
+            layout="@layout/msg_sender"/>
 
-    <LinearLayout
-        android:id="@+id/msgSendContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:gravity="end">
-        <TextView
-            android:id="@+id/msgSend"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".7"
-            android:text="Hello shah shsh shsh shhs"
-            android:background="@drawable/bg_send"
-            android:layout_margin="15dp"
-            android:padding="8dp"
-            android:textColor="@color/white"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/timSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="09:34 PM"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center_horizontal"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -127,12 +88,26 @@
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/msgInput"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/user"
-            android:padding="10dp"/>
+            android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/msgInput"
+            android:layout_width="0dp"
+            android:layout_weight=".8"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:drawableTint="#3A3838"/>
+
+        <ImageView
+            android:id="@+id/sendBtn"
+            android:layout_width="0dp"
+            android:layout_weight=".2"
+            android:layout_height="wrap_content"
+            android:src="@drawable/send"
+            android:backgroundTint="@color/bg"/>
+        </LinearLayout>
     </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>
