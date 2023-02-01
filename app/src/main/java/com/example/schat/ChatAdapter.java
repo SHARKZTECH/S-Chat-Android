@@ -1,6 +1,7 @@
 package com.example.schat;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ChatAdapter extends RecyclerView.Adapter{
 
@@ -46,12 +50,13 @@ public class ChatAdapter extends RecyclerView.Adapter{
         Message message=messages.get(position);
         if (holder.getClass() == SenderViewHolder.class){
             ((SenderViewHolder) holder).senderMsg.setText(message.getText());
-            String formatedDate= DateFormat.getDateTimeInstance().format(message.getCreatedAt());
-            ((SenderViewHolder) holder).timeSend.setText(formatedDate);
+//            String formatedDate= DateFormat.getDateTimeInstance().format(message.getCreatedAt());
+            String niceDateStr = (String) DateUtils.getRelativeTimeSpanString(message.getCreatedAt(), Calendar.getInstance().getTimeInMillis(), DateUtils.MINUTE_IN_MILLIS);
+            ((SenderViewHolder) holder).timeSend.setText(niceDateStr);
         }else{
             ((ReceiverViewHolder) holder).receiverMsg.setText(message.getText());
-            String formatedDate= DateFormat.getDateTimeInstance().format(message.getCreatedAt());
-            ((ReceiverViewHolder) holder).timeRe.setText(formatedDate);
+            String niceDateStr = (String) DateUtils.getRelativeTimeSpanString(message.getCreatedAt(), Calendar.getInstance().getTimeInMillis(), DateUtils.MINUTE_IN_MILLIS);
+            ((ReceiverViewHolder) holder).timeRe.setText(niceDateStr);
         }
 
     }
