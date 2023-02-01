@@ -30,6 +30,7 @@
         android:text="09:34 PM"
         android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginRight="43dp"/>
+        android:layout_marginRight="20dp"
+        android:textColor="@color/bg"/>
 
 </LinearLayout>

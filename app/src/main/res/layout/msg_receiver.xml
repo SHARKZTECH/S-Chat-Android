@@ -18,6 +18,7 @@
             android:text="Hello shah shsh shsh shhs
             shhshsh shhh hshsh sjjjs jsjsj sjjs sjjsjs"
             android:background="@drawable/bg_recieve"
+            android:textColor="@color/bg"
             android:layout_margin="15dp"
             android:padding="8dp"/>
     </LinearLayout>
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:text="09:32 PM"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/bg"/>
 
 </LinearLayout>

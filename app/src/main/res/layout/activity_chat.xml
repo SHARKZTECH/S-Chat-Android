@@ -38,18 +38,17 @@
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sharkz Reigns"/>
+                android:text="Sharkz Reigns"
+                android:textColor="@color/bg"/>
             <TextView
                 android:id="@+id/onlineStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="online"/>
+                android:text="online"
+                android:textColor="@color/teal_200"/>
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
-
-
 
 
     <LinearLayout
@@ -59,11 +58,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            layout="@layout/msg_receiver"/>
+<!--        <include-->
+<!--            layout="@layout/msg_receiver"/>-->
 
-        <include
-            layout="@layout/msg_sender"/>
+<!--        <include-->
+<!--            layout="@layout/msg_sender"/>-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
@@ -80,11 +79,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/bg_white"
-        app:placeholderText="Type Here"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         android:padding="20dp"
         app:boxCornerRadiusBottomEnd="10dp"
+        android:hint="Type here"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp">
@@ -97,6 +96,7 @@
             android:layout_width="0dp"
             android:layout_weight=".8"
             android:layout_height="wrap_content"
+            android:hint="Type Here"
             android:padding="10dp"
             android:drawableTint="#3A3838"/>
 

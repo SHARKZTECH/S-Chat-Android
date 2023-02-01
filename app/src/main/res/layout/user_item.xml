@@ -45,7 +45,7 @@
         android:layout_below="@id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Perform Will check it"
+        android:text="Last message"
         android:layout_marginLeft="8dp"
         android:drawableStart="@drawable/done_all"/>
     <TextView
