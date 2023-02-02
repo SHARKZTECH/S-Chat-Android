@@ -100,15 +100,17 @@
             android:hint="Type Here"
             android:padding="10dp"
             android:drawableTint="#3A3838"
-            android:textColorHint="@color/bg"/>
+            android:textColorHint="@color/bg"
+            android:background="@color/bg_white"/>
 
         <ImageView
             android:id="@+id/sendBtn"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="wrap_content"
-            android:src="@drawable/send"
-            android:backgroundTint="@color/bg"/>
+            android:src="@drawable/baseline_send"
+            android:backgroundTint="@color/bg"
+            android:layout_marginTop="10dp"/>
         </LinearLayout>
     </com.google.android.material.textfield.TextInputLayout>
 
