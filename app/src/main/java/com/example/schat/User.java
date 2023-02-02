@@ -46,4 +46,8 @@ public class User implements Serializable {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

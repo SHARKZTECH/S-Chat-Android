@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -61,7 +62,14 @@ public class ChatActivity extends AppCompatActivity {
 
         user= (User) getIntent().getSerializableExtra("user");
         userName.setText(user.getUserName());
-//        onlineStatus.setText(user.getStatus());
+
+        if(user.getStatus().equals("online")){
+            onlineStatus.setText(user.getStatus());
+        }else {
+            onlineStatus.setText("offline");
+            onlineStatus.setTextColor(getResources().getColor(R.color.bg));
+        }
+
 
         String senderId=mAuth.getUid();
         String receiverId=user.getUserId();

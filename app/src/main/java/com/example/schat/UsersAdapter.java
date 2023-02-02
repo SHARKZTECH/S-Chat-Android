@@ -2,6 +2,7 @@ package com.example.schat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +34,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user=userList.get(position);
-
         holder.userName.setText(user.getUserName());
+
+        if(user.getStatus().equals("online")){
+            holder.onlineStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_green));
+        }else{
+            holder.onlineStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_white));
+        }
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent=new Intent(context,ChatActivity.class);

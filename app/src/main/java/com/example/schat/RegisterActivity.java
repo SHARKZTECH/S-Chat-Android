@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     user=mAuth.getCurrentUser();
                                     String userId=user.getUid();
-                                    User user1=new User(user.getEmail(),user.getEmail(),"","");
+                                    User user1=new User(user.getEmail(),user.getEmail(),"","online");
                                     dbRef.child("users").child(userId).setValue(user1);
 
                                     startActivity(new Intent(getApplicationContext(),LoginActivity.class));
