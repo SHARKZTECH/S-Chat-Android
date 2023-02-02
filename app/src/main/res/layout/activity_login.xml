@@ -66,7 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:backgroundTint="@color/bg"/>
+        android:backgroundTint="@color/bg"
+        android:textColor="@color/bg_white"/>
 
     <TextView
         android:id="@+id/btnRegister"
