@@ -84,6 +84,7 @@
         android:padding="20dp"
         app:boxCornerRadiusBottomEnd="10dp"
         android:hint="Type here"
+        android:textColorHint="@color/bg"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp">
@@ -98,7 +99,8 @@
             android:layout_height="wrap_content"
             android:hint="Type Here"
             android:padding="10dp"
-            android:drawableTint="#3A3838"/>
+            android:drawableTint="#3A3838"
+            android:textColorHint="@color/bg"/>
 
         <ImageView
             android:id="@+id/sendBtn"

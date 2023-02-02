@@ -51,7 +51,7 @@ public class UsersFragment extends Fragment {
        user=mAuth.getCurrentUser();
        userList=new ArrayList<>();
 
-         usersAdapter=new UsersAdapter(userList,getContext());
+        usersAdapter=new UsersAdapter(userList,getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(usersAdapter);
 
