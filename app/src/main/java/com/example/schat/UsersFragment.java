@@ -67,6 +67,7 @@ public class UsersFragment extends Fragment {
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userList.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     User user1=dataSnapshot.getValue(User.class);
                     user1.setUserId(dataSnapshot.getKey());
@@ -74,8 +75,9 @@ public class UsersFragment extends Fragment {
                         userList.add(user1);
                     }
                 }
-//                userList.add(snapshot.getValue(User.class));
+//                usersAdapter.notifyDataSetChanged();
                 usersAdapter.notifyDataSetChanged();
+
             }
 
             @Override
