@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         fDb=FirebaseDatabase.getInstance();
         dbRef=fDb.getReference("users").child(FirebaseAuth.getInstance().getUid());
 
-        online();
 
         UsersFragment usersFragment=new UsersFragment();
         SettingsFragment settingsFragment=new SettingsFragment();
@@ -64,46 +64,29 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        online();
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        online();
     }
 
     public void online(){
-        dbRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user=snapshot.getValue(User.class);
-                HashMap<String,Object> map=new HashMap<>();
-                map.put("email",user.getEmail());
-                map.put("status","online");
-                dbRef.updateChildren(map);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("status","online");
+        dbRef.updateChildren(map);
     }
     public void offline(){
-        dbRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user=snapshot.getValue(User.class);
-                HashMap<String,Object> map=new HashMap<>();
-                map.put("email",user.getEmail());
-                map.put("status","offline");
-                dbRef.updateChildren(map);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        HashMap<String,Object> map=new HashMap<>();
+        map.put("status","offline");
+        dbRef.updateChildren(map);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        offline();
         finishAffinity();
         finish();
     }

@@ -1,5 +1,6 @@
 package com.example.schat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -51,17 +52,18 @@ public class UsersFragment extends Fragment {
        user=mAuth.getCurrentUser();
        userList=new ArrayList<>();
 
+       userList.clear();
+       getUsers();
+
         usersAdapter=new UsersAdapter(userList,getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(usersAdapter);
 
-        getUsers();
-
         return view;
     }
 
+
     public void getUsers(){
-        userList.clear();
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

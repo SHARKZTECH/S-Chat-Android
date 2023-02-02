@@ -42,7 +42,10 @@ public class ChatActivity extends AppCompatActivity {
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.bg_green));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         ImageView imageView=findViewById(R.id.userImg);
         TextView userName=findViewById(R.id.userName);
