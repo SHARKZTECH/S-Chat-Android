@@ -42,7 +42,7 @@ public class ChatActivity extends AppCompatActivity {
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.bg_green));
+        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.arrow_back));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
