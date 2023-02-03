@@ -1,18 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UsersFragment"
-    android:background="@color/bg">
+    android:weightSum="1"
+    android:orientation="vertical">
 
-  <TextView
-      android:layout_centerInParent="true"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Home"
-      android:textColor="@color/white"
-      android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-      android:textSize="40sp"/>
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+       android:layout_weight=".7"
+      android:background="@drawable/wbg"
+      android:padding="20dp">
 
-</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/p1"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:clipChildren="false"
+        android:layout_marginRight="10dp">
+      <TextView
+          android:id="@+id/imgBg1"
+          android:layout_width="140dp"
+          android:layout_height="150dp"
+          android:background="@drawable/p1_bg"
+          android:layout_marginTop="25dp"/>
+      <ImageView
+          android:id="@+id/img1"
+          android:layout_width="160dp"
+          android:layout_height="200dp"
+          android:src="@drawable/person1"
+          android:layout_marginTop="-30dp"
+          android:layout_marginLeft="-30dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/p2"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:clipChildren="false">
+      <TextView
+          android:id="@+id/imgBg2"
+          android:layout_width="140dp"
+          android:layout_height="150dp"
+          android:background="@drawable/p2_bg"
+          android:layout_marginTop="25dp"/>
+       <ImageView
+         android:id="@+id/img2"
+         android:layout_width="150dp"
+         android:layout_height="200dp"
+         android:src="@drawable/person1"
+         android:layout_marginTop="-30dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/p3"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/p1"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:clipChildren="false"
+        android:layout_marginRight="10dp">
+      <TextView
+          android:id="@+id/imgBg3"
+          android:layout_width="140dp"
+          android:layout_height="150dp"
+          android:background="@drawable/p2_bg"
+          android:layout_marginTop="25dp"/>
+      <ImageView
+          android:id="@+id/img3"
+          android:layout_width="150dp"
+          android:layout_height="200dp"
+          android:src="@drawable/person1"
+          android:layout_marginTop="-30dp"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/p4"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/p2"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:clipChildren="false">
+      <TextView
+          android:id="@+id/imgBg4"
+          android:layout_width="140dp"
+          android:layout_height="150dp"
+          android:background="@drawable/p4_bg"
+          android:layout_marginTop="25dp"/>
+      <ImageView
+          android:id="@+id/img4"
+          android:layout_width="160dp"
+          android:layout_height="200dp"
+          android:src="@drawable/person1"
+          android:layout_marginTop="-30dp"
+          android:layout_marginRight="-30dp"/>
+    </RelativeLayout>
+
+
+
+  </RelativeLayout>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight=".3"
+      android:background="@color/white"
+      android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enjoy the new experience of \n
+         chating with global friends"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connect pple arround the world for free"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Get Started"
+        android:layout_marginVertical="20dp"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_green"
+        android:paddingHorizontal="30dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Designed by Sharkz Reigns"
+        android:textAlignment="center"/>
+  </LinearLayout>
+
+</LinearLayout>
