@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         CallFragment callFragment=new CallFragment();
         HomeFragment homeFragment=new HomeFragment();
 
-        bottomNavigationView.setSelectedItemId(R.id.people);
-        getSupportFragmentManager().beginTransaction().add(R.id.container,usersFragment).commit();
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        getSupportFragmentManager().beginTransaction().add(R.id.container,homeFragment).commit();
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

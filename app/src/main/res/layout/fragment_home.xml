@@ -99,11 +99,11 @@
           android:layout_marginTop="25dp"/>
       <ImageView
           android:id="@+id/img4"
-          android:layout_width="160dp"
-          android:layout_height="200dp"
+          android:layout_width="160sp"
+          android:layout_height="200sp"
           android:src="@drawable/person1"
-          android:layout_marginTop="-30dp"
-          android:layout_marginRight="-30dp"/>
+          android:layout_marginTop="-30sp"
+          android:layout_marginRight="-30sp"/>
     </RelativeLayout>
 
 
@@ -123,6 +123,7 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/bg"
         android:layout_marginTop="20dp"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
     <TextView
@@ -130,21 +131,25 @@
         android:layout_height="wrap_content"
         android:text="Connect pple arround the world for free"
         android:textAlignment="center"
+        android:textColor="@color/bg_1"
         android:layout_marginTop="10dp"/>
     <Button
+        android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Get Started"
         android:layout_marginVertical="20dp"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:background="@drawable/bg_green"
         android:paddingHorizontal="30dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Designed by Sharkz Reigns"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@color/bg_1"/>
   </LinearLayout>
 
 </LinearLayout>
