@@ -19,8 +19,8 @@
         android:id="@+id/userImgContainer"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_margin="20dp"
-        android:elevation="20dp"
+        android:layout_margin="10dp"
+        android:elevation="10dp"
         app:cardCornerRadius="75dp"
         android:layout_centerHorizontal="true">
         <ImageView
@@ -29,16 +29,18 @@
             android:layout_height="match_parent"
             android:src="@drawable/person"/>
     </androidx.cardview.widget.CardView>
+
+
+
     <EditText
         android:id="@+id/userName"
         android:layout_below="@id/userImgContainer"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sharkz Reigns"
-        android:textColor="@color/bg_white"
+        android:textColor="@color/white"
         android:hint="UserName"
-        android:textColorHint="@color/bg_white"
+        android:textColorHint="#7F7193"
         android:minWidth="200dp"
         android:gravity="center"
         android:background="@drawable/edit_text_bg"
@@ -52,12 +54,21 @@
         android:layout_height="wrap_content"
         android:textColor="@color/bg_white"
         android:hint="About"
-        android:textColorHint="@color/bg_white"
+        android:textColorHint="#7F7193"
         android:minWidth="200dp"
         android:gravity="center"
         android:background="@drawable/edit_text_bg"
         android:layout_marginVertical="5dp"
         android:padding="8dp"/>
+       <Button
+           android:id="@+id/updateProf"
+           android:layout_below="@id/userAbout"
+           android:layout_centerHorizontal="true"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Update"
+           android:textAllCaps="false"
+           android:background="@drawable/bg_green"/>
     </RelativeLayout>
 
     <LinearLayout

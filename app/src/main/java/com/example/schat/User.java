@@ -12,6 +12,8 @@ public class User implements Serializable {
 
     private String userId;
 
+    private String userAbout;
+
 
     public User() {
     }
@@ -49,5 +51,13 @@ public class User implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUserAbout() {
+        return userAbout;
+    }
+
+    public void setUserAbout(String userAbout) {
+        this.userAbout = userAbout;
     }
 }
