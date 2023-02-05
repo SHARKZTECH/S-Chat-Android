@@ -58,8 +58,11 @@ public class SettingsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user=snapshot.getValue(User.class);
                 userName.setText(user.getUserName());
-                Picasso.get()
-                        .load(user.getProfilePic()).into(userImg);
+
+                if(!user.getProfilePic().isEmpty()){
+                    Picasso.get()
+                            .load(user.getProfilePic()).into(userImg);
+                }
                 userAbout.setText(user.getUserAbout());
             }
 
