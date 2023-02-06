@@ -71,7 +71,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
                                 if(message.getuId().equals(FirebaseAuth.getInstance().getUid()) && user.getStatus().equals("online")){
                                     holder.lastMsgIcon.setVisibility(View.VISIBLE);
                                 }
-                                notifyDataSetChanged();
+//                                notifyDataSetChanged();
                             }
                         }
                     }
