@@ -39,15 +39,23 @@
         android:text="Sharkz Reigns"
         android:layout_marginLeft="8dp"
         android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/lastMassage"
+
+    <ImageView
+        android:id="@+id/lastMassageIcon"
         android:layout_toRightOf="@id/userImgContainer"
         android:layout_below="@id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/done_all"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/lastMassage"
+        android:layout_toRightOf="@id/lastMassageIcon"
+        android:layout_below="@id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Last message"
-        android:layout_marginLeft="8dp"
-        android:drawableStart="@drawable/done_all"/>
+        android:layout_marginLeft="8dp" />
     <TextView
         android:id="@+id/time"
         android:layout_alignParentEnd="true"
