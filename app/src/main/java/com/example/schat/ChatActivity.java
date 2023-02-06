@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -65,6 +66,10 @@ public class ChatActivity extends AppCompatActivity {
 
         user= (User) getIntent().getSerializableExtra("user");
         userName.setText(user.getUserName());
+
+        if(!user.getProfilePic().isEmpty()) {
+            Picasso.get().load(user.getProfilePic()).into(imageView);
+        }
 
         if(user.getStatus().equals("online")){
             onlineStatus.setText(user.getStatus());

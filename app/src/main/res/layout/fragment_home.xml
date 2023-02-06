@@ -25,7 +25,7 @@
         android:layout_marginRight="10dp">
       <TextView
           android:id="@+id/imgBg1"
-          android:layout_width="140dp"
+          android:layout_width="130dp"
           android:layout_height="150dp"
           android:background="@drawable/p1_bg"
           android:layout_marginTop="25dp"/>
@@ -93,14 +93,14 @@
         android:clipChildren="false">
       <TextView
           android:id="@+id/imgBg4"
-          android:layout_width="140dp"
+          android:layout_width="130dp"
           android:layout_height="150dp"
           android:background="@drawable/p4_bg"
           android:layout_marginTop="25dp"/>
       <ImageView
           android:id="@+id/img4"
-          android:layout_width="160sp"
-          android:layout_height="200sp"
+          android:layout_width="160dp"
+          android:layout_height="200dp"
           android:src="@drawable/person1"
           android:layout_marginTop="-30sp"
           android:layout_marginRight="-30sp"/>
