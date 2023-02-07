@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HomeFragment.HomeFrag{
     BottomNavigationView bottomNavigationView;
     FirebaseDatabase fDb;
     DatabaseReference dbRef;
@@ -95,5 +95,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         offline();
+    }
+
+    @Override
+    public void onClick() {
+        UsersFragment usersFragment=new UsersFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container,usersFragment).commit();
+        bottomNavigationView.setSelectedItemId(R.id.people);
     }
 }
