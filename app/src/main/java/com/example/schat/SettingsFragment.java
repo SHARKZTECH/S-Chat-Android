@@ -112,9 +112,14 @@ public class SettingsFragment extends Fragment {
             reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    fDb.getReference().child("users")
-                            .child(FirebaseAuth.getInstance().getUid()).child("profilePic")
-                            .setValue(uri.toString());
+                   reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                       @Override
+                       public void onSuccess(Uri uri) {
+                           fDb.getReference().child("users")
+                                   .child(FirebaseAuth.getInstance().getUid()).child("profilePic")
+                                   .setValue(uri.toString());
+                       }
+                   });
                 }
             });
         }
