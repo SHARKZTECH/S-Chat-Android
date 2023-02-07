@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
     ViewPager viewPager;
     FirebaseDatabase fDb;
     DatabaseReference dbRef;
+    MenuItem prevMenuItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
 
         BottomPagerAdapter adapter=new BottomPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+
+          viewPagerChangeLister();
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -118,6 +122,33 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
         bottomNavigationView.setSelectedItemId(R.id.people);
     }
 
+    void viewPagerChangeLister(){
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (prevMenuItem != null) {
+                    prevMenuItem.setChecked(false);
+                }
+                else
+                {
+                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                }
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
+                prevMenuItem = bottomNavigationView.getMenu().getItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+    }
     public class BottomPagerAdapter  extends FragmentPagerAdapter {
 
         public BottomPagerAdapter(@NonNull FragmentManager fm) {
