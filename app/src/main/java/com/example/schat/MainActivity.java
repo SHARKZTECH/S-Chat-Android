@@ -228,14 +228,10 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
                 snackbar.show();
             }
         }else{
-
-            Network[] networks = connectivityManager.getAllNetworks();
-            for (Network network : networks) {
-                NetworkInfo networkInfo = connectivityManager.getNetworkInfo(network);
-                if (networkInfo == null) {
-                    Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
-                    snackbar.show();
-                }
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            if (activeNetworkInfo == null || !activeNetworkInfo.isConnected()) {
+                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
+                snackbar.show();
             }
 
         }
