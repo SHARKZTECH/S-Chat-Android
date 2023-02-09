@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
     DatabaseReference dbRef;
     MenuItem prevMenuItem;
 
+    private boolean isFirstLaunch = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,7 +188,6 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
 
     void checkNetwork(){
 
-
         NetworkRequest networkRequest=new NetworkRequest.Builder()
                 .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
                 .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
@@ -198,18 +198,23 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
             @Override
             public void onAvailable(@NonNull Network network) {
                 super.onAvailable(network);
-                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"online",Snackbar.LENGTH_SHORT);
-                View view=snackbar.getView();
-                view.setBackground(getResources().getDrawable(R.drawable.bg_green));
-                snackbar.show();
+                if (!isFirstLaunch) {
+                    Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"online",Snackbar.LENGTH_SHORT);
+                    View view=snackbar.getView();
+                    view.setBackground(getResources().getDrawable(R.drawable.bg_green));
+                    snackbar.show();
+                }
             }
 
             @Override
             public void onLost(@NonNull Network network) {
                 super.onLost(network);
+                isFirstLaunch=false;
+
                 Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
             }
+
         };
 
 
