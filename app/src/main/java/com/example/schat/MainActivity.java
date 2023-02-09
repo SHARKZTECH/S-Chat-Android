@@ -185,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
 
     void checkNetwork(){
 
+
         NetworkRequest networkRequest=new NetworkRequest.Builder()
                 .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
                 .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
             @Override
             public void onAvailable(@NonNull Network network) {
                 super.onAvailable(network);
-                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"online",Snackbar.LENGTH_LONG);
+                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"online",Snackbar.LENGTH_SHORT);
                 View view=snackbar.getView();
                 view.setBackground(getResources().getDrawable(R.drawable.bg_green));
                 snackbar.show();
@@ -204,10 +205,11 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
             @Override
             public void onLost(@NonNull Network network) {
                 super.onLost(network);
-                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"offline",Snackbar.LENGTH_INDEFINITE);
+                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
             }
         };
+
 
         ConnectivityManager connectivityManager= null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -217,10 +219,11 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if(connectivityManager.getActiveNetwork() == null){
-                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"offline",Snackbar.LENGTH_INDEFINITE);
+                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
             }
         }
+
 
     }
 
