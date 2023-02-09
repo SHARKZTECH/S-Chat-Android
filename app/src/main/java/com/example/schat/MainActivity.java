@@ -7,13 +7,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
     FirebaseDatabase fDb;
     DatabaseReference dbRef;
     MenuItem prevMenuItem;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
             }
         });
         online();
+        checkNetwork();
     }
 
     @Override
@@ -172,4 +182,46 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
             return 4;
         }
     }
+
+    void checkNetwork(){
+
+        NetworkRequest networkRequest=new NetworkRequest.Builder()
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+                .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+                .build();
+
+        ConnectivityManager.NetworkCallback networkCallback=new ConnectivityManager.NetworkCallback(){
+            @Override
+            public void onAvailable(@NonNull Network network) {
+                super.onAvailable(network);
+                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"online",Snackbar.LENGTH_LONG);
+                View view=snackbar.getView();
+                view.setBackground(getResources().getDrawable(R.drawable.bg_green));
+                snackbar.show();
+            }
+
+            @Override
+            public void onLost(@NonNull Network network) {
+                super.onLost(network);
+                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"offline",Snackbar.LENGTH_INDEFINITE);
+                snackbar.show();
+            }
+        };
+
+        ConnectivityManager connectivityManager= null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            connectivityManager = getSystemService(ConnectivityManager.class);
+        }
+        connectivityManager.requestNetwork(networkRequest,networkCallback);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(connectivityManager.getActiveNetwork() == null){
+                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"offline",Snackbar.LENGTH_INDEFINITE);
+                snackbar.show();
+            }
+        }
+
+    }
+
 }
