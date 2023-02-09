@@ -7,9 +7,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
 import android.net.NetworkRequest;
 import android.os.Build;
 import android.os.Bundle;
@@ -211,10 +213,13 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
         };
 
 
-        ConnectivityManager connectivityManager= null;
+        ConnectivityManager connectivityManager = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             connectivityManager = getSystemService(ConnectivityManager.class);
+        }else{
+            connectivityManager= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         }
+
         connectivityManager.requestNetwork(networkRequest,networkCallback);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -222,6 +227,17 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
                 Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
             }
+        }else{
+
+            Network[] networks = connectivityManager.getAllNetworks();
+            for (Network network : networks) {
+                NetworkInfo networkInfo = connectivityManager.getNetworkInfo(network);
+                if (networkInfo == null) {
+                    Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
+                    snackbar.show();
+                }
+            }
+
         }
 
 
