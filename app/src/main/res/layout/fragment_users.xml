@@ -3,14 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UsersFragment"
     android:background="@color/bg_white"
     android:orientation="vertical"
     android:padding="20dp">
 
+   <com.example.schat.ToolDotProgress
+       android:id="@+id/dots_progress"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_margin="16dp"
+       app:color="@color/teal_200"
+       app:count="3"
+       app:timeout="300"
+       android:visibility="gone"
+       android:layout_gravity="center"/>
+
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recycler"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
+
+
+
 
 </LinearLayout>

@@ -39,12 +39,16 @@ public class UsersFragment extends Fragment {
     DatabaseReference dbRef;
     List<User> userList;
     UsersAdapter usersAdapter;
+    ToolDotProgress progress;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_users, container, false);
 
        recyclerView=view.findViewById(R.id.recycler);
+       progress=view.findViewById(R.id.dots_progress);
+
+       progress.setVisibility(View.VISIBLE);
 
        mAuth=FirebaseAuth.getInstance();
        fDb=FirebaseDatabase.getInstance();
@@ -68,6 +72,7 @@ public class UsersFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userList.clear();
+                progress.setVisibility(View.GONE);
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     User user1=dataSnapshot.getValue(User.class);
                     user1.setUserId(dataSnapshot.getKey());

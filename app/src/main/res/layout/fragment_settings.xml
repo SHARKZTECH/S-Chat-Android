@@ -30,6 +30,18 @@
             android:src="@drawable/person"/>
     </androidx.cardview.widget.CardView>
 
+       <com.example.schat.ToolDotProgress
+           android:id="@+id/dots_progress"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           app:color="@color/teal_200"
+           app:count="3"
+           app:timeout="300"
+           android:visibility="gone"
+           android:layout_centerHorizontal="true"
+           android:layout_above="@id/userName"
+           android:elevation="10dp"/>
+
 
 
     <EditText

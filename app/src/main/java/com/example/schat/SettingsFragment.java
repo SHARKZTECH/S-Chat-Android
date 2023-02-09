@@ -38,6 +38,7 @@ public class SettingsFragment extends Fragment {
     ImageView userImg;
     TextView userName,userAbout;
     Button update;
+    ToolDotProgress progress;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +49,9 @@ public class SettingsFragment extends Fragment {
         userName=view.findViewById(R.id.userName);
         userAbout=view.findViewById(R.id.userAbout);
         update=view.findViewById(R.id.updateProf);
+        progress=view.findViewById(R.id.dots_progress);
+
+        progress.setVisibility(View.VISIBLE);
 
         mAuth=FirebaseAuth.getInstance();
         fDb=FirebaseDatabase.getInstance();
@@ -56,6 +60,7 @@ public class SettingsFragment extends Fragment {
         fDb.getReference().child("users").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                progress.setVisibility(View.GONE);
                 User user=snapshot.getValue(User.class);
                 userName.setText(user.getUserName());
 
