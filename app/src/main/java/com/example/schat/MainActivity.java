@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
         });
         online();
         checkNetwork();
+
     }
 
     @Override
@@ -210,7 +211,6 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
             public void onLost(@NonNull Network network) {
                 super.onLost(network);
                 isFirstLaunch=false;
-
                 Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
                 snackbar.show();
             }
