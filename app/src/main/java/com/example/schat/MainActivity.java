@@ -41,12 +41,13 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
     DatabaseReference dbRef;
     MenuItem prevMenuItem;
 
-    private boolean isFirstLaunch = true;
+    public static boolean isFirstLaunch = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        isFirstLaunch=true;
 
         bottomNavigationView=findViewById(R.id.btmNavigation);
         viewPager=findViewById(R.id.pager);
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
             }
         });
         online();
-        checkNetwork();
+//        checkNetwork();
 
     }
 
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
     protected void onStart() {
         super.onStart();
         online();
+        CheckNet.checkNetwork(this);
     }
 
     public void online(){
@@ -187,61 +189,61 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
         }
     }
 
-    void checkNetwork(){
-
-        NetworkRequest networkRequest=new NetworkRequest.Builder()
-                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-                .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-                .build();
-
-        ConnectivityManager.NetworkCallback networkCallback=new ConnectivityManager.NetworkCallback(){
-            @Override
-            public void onAvailable(@NonNull Network network) {
-                super.onAvailable(network);
-                if (!isFirstLaunch) {
-                    Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"online",Snackbar.LENGTH_SHORT);
-                    View view=snackbar.getView();
-                    view.setBackground(getResources().getDrawable(R.drawable.bg_green));
-                    snackbar.show();
-                }
-            }
-
-            @Override
-            public void onLost(@NonNull Network network) {
-                super.onLost(network);
-                isFirstLaunch=false;
-                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
-                snackbar.show();
-            }
-
-        };
-
-
-        ConnectivityManager connectivityManager = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            connectivityManager = getSystemService(ConnectivityManager.class);
-        }else{
-            connectivityManager= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        }
-
-        connectivityManager.requestNetwork(networkRequest,networkCallback);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if(connectivityManager.getActiveNetwork() == null){
-                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
-                snackbar.show();
-            }
-        }else{
-            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-            if (activeNetworkInfo == null || !activeNetworkInfo.isConnected()) {
-                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
-                snackbar.show();
-            }
-
-        }
-
-
-    }
+//    void checkNetwork(){
+//
+//        NetworkRequest networkRequest=new NetworkRequest.Builder()
+//                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+//                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+//                .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+//                .build();
+//
+//        ConnectivityManager.NetworkCallback networkCallback=new ConnectivityManager.NetworkCallback(){
+//            @Override
+//            public void onAvailable(@NonNull Network network) {
+//                super.onAvailable(network);
+//                if (!isFirstLaunch) {
+//                    Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"online",Snackbar.LENGTH_SHORT);
+//                    View view=snackbar.getView();
+//                    view.setBackground(getResources().getDrawable(R.drawable.bg_green));
+//                    snackbar.show();
+//                }
+//            }
+//
+//            @Override
+//            public void onLost(@NonNull Network network) {
+//                super.onLost(network);
+//                isFirstLaunch=false;
+//                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
+//                snackbar.show();
+//            }
+//
+//        };
+//
+//
+//        ConnectivityManager connectivityManager = null;
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            connectivityManager = getSystemService(ConnectivityManager.class);
+//        }else{
+//            connectivityManager= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+//        }
+//
+//        connectivityManager.requestNetwork(networkRequest,networkCallback);
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if(connectivityManager.getActiveNetwork() == null){
+//                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
+//                snackbar.show();
+//            }
+//        }else{
+//            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+//            if (activeNetworkInfo == null || !activeNetworkInfo.isConnected()) {
+//                Snackbar snackbar=Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content),"you r offline!",Snackbar.LENGTH_INDEFINITE);
+//                snackbar.show();
+//            }
+//
+//        }
+//
+//
+//    }
 
 }
