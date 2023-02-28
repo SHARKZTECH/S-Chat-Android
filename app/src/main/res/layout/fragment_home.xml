@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UsersFragment"
     android:weightSum="1"
     android:orientation="vertical">
@@ -11,7 +10,7 @@
   <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="0dp"
-       android:layout_weight=".7"
+       android:layout_weight=".65"
       android:background="@drawable/wbg"
       android:padding="20dp">
 
@@ -19,20 +18,20 @@
         android:id="@+id/p1"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:padding="10dp"
         android:clipChildren="false"
         android:layout_marginRight="10dp">
       <TextView
           android:id="@+id/imgBg1"
-          android:layout_width="130dp"
-          android:layout_height="150dp"
+          android:layout_width="100dp"
+          android:layout_height="120dp"
           android:background="@drawable/p1_bg"
           android:layout_marginTop="25dp"/>
       <ImageView
           android:id="@+id/img1"
-          android:layout_width="160dp"
-          android:layout_height="200dp"
+          android:layout_width="130dp"
+          android:layout_height="170dp"
           android:src="@drawable/person1"
           android:layout_marginTop="-30dp"
           android:layout_marginLeft="-30dp"/>
@@ -42,19 +41,19 @@
         android:id="@+id/p2"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="160dp"
         android:padding="10dp"
         android:clipChildren="false">
       <TextView
           android:id="@+id/imgBg2"
-          android:layout_width="140dp"
-          android:layout_height="150dp"
+          android:layout_width="120dp"
+          android:layout_height="130dp"
           android:background="@drawable/p2_bg"
           android:layout_marginTop="25dp"/>
        <ImageView
          android:id="@+id/img2"
-         android:layout_width="150dp"
-         android:layout_height="200dp"
+         android:layout_width="130dp"
+         android:layout_height="180dp"
          android:src="@drawable/person1"
          android:layout_marginTop="-30dp"/>
     </RelativeLayout>
@@ -64,20 +63,20 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/p1"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="160dp"
         android:padding="10dp"
         android:clipChildren="false"
         android:layout_marginRight="10dp">
       <TextView
           android:id="@+id/imgBg3"
-          android:layout_width="140dp"
-          android:layout_height="150dp"
+          android:layout_width="120dp"
+          android:layout_height="130dp"
           android:background="@drawable/p2_bg"
           android:layout_marginTop="25dp"/>
       <ImageView
           android:id="@+id/img3"
-          android:layout_width="150dp"
-          android:layout_height="200dp"
+          android:layout_width="130dp"
+          android:layout_height="180dp"
           android:src="@drawable/person1"
           android:layout_marginTop="-30dp"/>
     </RelativeLayout>
@@ -88,31 +87,29 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/p2"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:padding="10dp"
         android:clipChildren="false">
       <TextView
           android:id="@+id/imgBg4"
-          android:layout_width="130dp"
-          android:layout_height="150dp"
+          android:layout_width="100dp"
+          android:layout_height="120dp"
           android:background="@drawable/p4_bg"
           android:layout_marginTop="25dp"/>
       <ImageView
           android:id="@+id/img4"
-          android:layout_width="160dp"
-          android:layout_height="200dp"
+          android:layout_width="130dp"
+          android:layout_height="170dp"
           android:src="@drawable/person1"
           android:layout_marginTop="-30sp"
           android:layout_marginRight="-30sp"/>
     </RelativeLayout>
 
-
-
   </RelativeLayout>
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight=".3"
+      android:layout_weight=".35"
       android:background="@color/white"
       android:orientation="vertical">
     <TextView
