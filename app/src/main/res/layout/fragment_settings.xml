@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/profile_bg"
-        android:layout_margin="20dp"
-       android:padding="10dp">
+        android:layout_margin="15dp"
+       android:paddingBottom="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/userImgContainer"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_margin="10dp"
         android:elevation="10dp"
         app:cardCornerRadius="75dp"
@@ -49,29 +49,27 @@
         android:layout_below="@id/userImgContainer"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:textColor="@color/white"
         android:hint="UserName"
         android:textColorHint="#7F7193"
         android:minWidth="200dp"
         android:gravity="center"
         android:background="@drawable/edit_text_bg"
-        android:layout_marginVertical="5dp"
-        android:padding="8dp"/>
+        android:layout_marginVertical="5dp"/>
     <EditText
         android:id="@+id/userAbout"
         android:layout_below="@id/userName"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:textColor="@color/bg_white"
         android:hint="About"
         android:textColorHint="#7F7193"
         android:minWidth="200dp"
         android:gravity="center"
         android:background="@drawable/edit_text_bg"
-        android:layout_marginVertical="5dp"
-        android:padding="8dp"/>
+        android:layout_marginVertical="5dp"/>
        <Button
            android:id="@+id/updateProf"
            android:layout_below="@id/userAbout"
@@ -98,7 +96,7 @@
             android:text="Account"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:textColor="@color/bg"/>
         <TextView
             android:layout_width="wrap_content"
@@ -106,7 +104,7 @@
             android:text="Notifications"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:textColor="@color/bg"/>
         <TextView
             android:layout_width="wrap_content"
@@ -114,7 +112,7 @@
             android:text="Privacy"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:textColor="@color/bg"/>
         <TextView
             android:layout_width="wrap_content"

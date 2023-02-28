@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.snackbar.Snackbar;
 
 public class CheckNet {
-   private static boolean isFirstLaunch = MainActivity.isFirstLaunch;
+    private static boolean isFirstLaunch = MainActivity.isFirstLaunch;
 
     public static void checkNetwork(Activity activity){
 
