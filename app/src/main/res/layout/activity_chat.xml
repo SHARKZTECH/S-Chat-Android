@@ -101,6 +101,7 @@
             android:padding="10dp"
             android:drawableTint="#3A3838"
             android:textColorHint="@color/bg"
+            android:textColor="@color/bg"
             android:background="@color/bg_white"/>
 
         <ImageView
