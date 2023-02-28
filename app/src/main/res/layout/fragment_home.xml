@@ -146,7 +146,8 @@
         android:layout_height="wrap_content"
         android:text="Designed by Sharkz Reigns"
         android:textAlignment="center"
-        android:textColor="@color/bg_1"/>
+        android:textColor="@color/bg_1"
+        android:visibility="gone"/>
   </LinearLayout>
 
 </LinearLayout>
