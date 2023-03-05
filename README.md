@@ -8,7 +8,7 @@ S-Chat Android is an Android application that allows users to communicate with e
 - Change profile picture and update user information
 
 # Requirements
-- Minimum SDK version 16
+- Minimum SDK version 21
 - Latest version of Android Studio
 - Gradle build system
 
