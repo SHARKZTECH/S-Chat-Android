@@ -1,11 +1,8 @@
 package com.example.schat;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 
+import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,12 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,8 +51,7 @@ public class UsersFragment extends Fragment {
        user=mAuth.getCurrentUser();
        userList=new ArrayList<>();
 
-       userList.clear();
-       getUsers();
+        getUsers();
 
         usersAdapter=new UsersAdapter(userList,getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -73,22 +67,25 @@ public class UsersFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userList.clear();
                 progress.setVisibility(View.GONE);
-                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    User user1=dataSnapshot.getValue(User.class);
-                    user1.setUserId(dataSnapshot.getKey());
-                    if(!user1.getEmail().equals(user.getEmail())){
-                        userList.add(user1);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    User user1 = dataSnapshot.getValue(User.class);
+                    if (user1 != null && user != null) {
+                        user1.setUserId(dataSnapshot.getKey());
+                        if (user.getEmail() != null && !user.getEmail().equalsIgnoreCase(user1.getEmail())) {
+                            userList.add(user1);
+                        }else{
+                            Log.d("user", "onDataChange: "+user1.getEmail()+" "+user.getEmail()+" "+userList.get(0).getEmail());
+                        }
                     }
                 }
-//                usersAdapter.notifyDataSetChanged();
                 usersAdapter.notifyDataSetChanged();
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle the error here
             }
         });
     }
+
 }

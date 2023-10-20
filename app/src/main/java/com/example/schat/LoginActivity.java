@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,9 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                     Toast.makeText(LoginActivity.this, "Login successfully!", Toast.LENGTH_SHORT).show();
                                 }else{
+                                    String error = task.getException().getMessage();
+                                    Log.e("Login", "Login Failed: " + error);
+                                    Toast.makeText(LoginActivity.this, "Login Failed: " + error, Toast.LENGTH_SHORT).show();
                                     Toast.makeText(LoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
                                 }
                             }

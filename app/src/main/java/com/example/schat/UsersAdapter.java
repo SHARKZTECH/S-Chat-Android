@@ -1,5 +1,6 @@
 package com.example.schat;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -40,12 +41,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user=userList.get(position);
         holder.userName.setText(user.getUserName());
 
-        if(!user.getProfilePic().isEmpty()){
+        if(user.getProfilePic() !=null && !user.getProfilePic().isEmpty()){
             Uri uri=Uri.parse(user.getProfilePic());
             Picasso.get().load(uri).into(holder.imageView);
         }else{
@@ -67,8 +69,10 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
                         if (snapshot.hasChildren()){
                             for (DataSnapshot snapshot1:snapshot.getChildren()) {
                                 Message message=snapshot1.getValue(Message.class);
-                                holder.lastMsg.setText(message.getText());
-                                if(message.getuId().equals(FirebaseAuth.getInstance().getUid()) && user.getStatus().equals("online")){
+                                if (message != null) {
+                                    holder.lastMsg.setText(message.getText());
+                                }
+                                if (message != null && message.getuId().equals(FirebaseAuth.getInstance().getUid()) && user.getStatus().equals("online")) {
                                     holder.lastMsgIcon.setVisibility(View.VISIBLE);
                                 }
 //                                notifyDataSetChanged();
@@ -94,7 +98,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         return userList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView userName,lastMsg,msgCount,time,onlineStatus;
         ImageView imageView,lastMsgIcon;
         public MyViewHolder(@NonNull View itemView) {
